@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker run -it --rm aikido
+docker run -it --rm -v $PWD:/home/developer/src/shared aikido
