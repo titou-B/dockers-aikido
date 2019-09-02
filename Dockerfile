@@ -70,8 +70,17 @@ RUN echo "deb http://ftp.fr.debian.org/debian/ stretch-backports main" >> /etc/a
     cd .. && \
     rm -r dart
 
-RUN cd /home/developer && \
-    catkin_make_isolated
+# RUN cd /home/developer && \
+#     catkin_make_isolated
+RUN cd /home/developer/src/aikido && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make -j2 && \
+    make install && \
+    cd /usr/include && \
+    ln -s eigen3/Eigen Eigen && \
+    rm -r /home/developer/src/aikido
 
 WORKDIR /home/developer
 VOLUME /home/developer/src/shared
